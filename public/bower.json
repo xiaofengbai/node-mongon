@@ -1,0 +1,23 @@
+{
+    "name": "bower",
+    "homepage": "https://github.com/xiaofengbai/node-mongon",
+    "description": "package control",
+    "main": "",
+    "keywords": [
+        "bower"
+    ],
+    "authors": [
+        "baixiaofeng"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "juqery": "^3.3.1"
+    }
+}

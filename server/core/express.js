@@ -18,9 +18,13 @@ function initWebpack(app) {
     app.use(devMiddleware(compiler, {
         noInfo: true,
         publicPath: wpConfig.output.publicPath,
-        headers: { "Access-Control-Allow-Origin": "*" },
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        },
         //stats: 'errors-only'
-        stats: { colors: true }
+        stats: {
+            colors: true
+        }
     }));
 
     let hotMiddleware = require('webpack-hot-middleware'); // eslint-disable-line
@@ -30,8 +34,12 @@ function initWebpack(app) {
 }
 module.exports = function(db) {
     let app = express();
+    let router = express.Router();
+    let path = require('path');
     // parse application/x-www-form-urlencoded
-    app.use(bodyPaese.urlencoded({ extended: false }))
+    app.use(bodyPaese.urlencoded({
+        extended: false
+    }))
 
     // parse application/json
     app.use(bodyPaese.json())
@@ -39,9 +47,12 @@ module.exports = function(db) {
         console.log('Time: %d', Date.now());
         next();
     });
-    var projectRouter = require('../models/project');
+    router.get('/', function(req, res, next) {
+        res.render(path.join(__dirname, '../../public'));
+    })
+    let projectRouter = require('../models/project');
     app.use('/project', projectRouter);
-
+    app.use('/', router);
     let services = require("./services");
     services.loadServices(app, db);
     initWebpack(app);
