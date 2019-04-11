@@ -32,15 +32,15 @@ exports.add = function(param) {
         .then(json => {
             return json;
         })
-        // console.log(param);
-        // let projects = {
-        //     name: '白小峰'
-        // };
-        // return mongo.getDB().collection('userTests').insertOne(projects, function(err, doc) {
-        //     if (!err) {
-        //         return doc;
-        //     } else {
-        //         console.log(`Err:${err}`)
-        //     }
-        // })
+    console.log(param);
+    let projects = {
+        name: '白小峰'
+    };
+    return mongo.getDB().collection('userTests').insertOne(projects, function(err, doc) {
+        if (!err) {
+            return doc;
+        } else {
+            console.log(`Err:${err}`)
+        }
+    })
 }
